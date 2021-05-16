@@ -1,0 +1,32 @@
+﻿@model Marketplace.Website.Models.LogInModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LogIn</title>
+</head>
+<body>
+    <h1>Inicio de sesión</h1>
+    @*directiva de MVC razor - helper de html que me genera el formulario >> asi se ve del lado del cliente <form action="/Auth/LogIn" method="post">*@
+    @using (Html.BeginForm())
+    {
+        <div>
+            <label for="Email">Email</label>
+        </div>
+        <div>
+            <input id="Email" name="Email" type="email" value="" placeholder="Ingrese email" requiered autocomplete="off"
+        </div>
+        <div>
+            <label for="Password">Password</label>
+        </div>
+        <div>
+            <input id="Password" name="Password" type="password" />
+        </div>
+        <p>
+            <button type="submit">Log In</button>
+        </p>
+    }
+</body>
+</html>
