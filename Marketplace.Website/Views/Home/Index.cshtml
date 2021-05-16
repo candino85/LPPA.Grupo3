@@ -1,7 +1,6 @@
-﻿@*por ahora no se usa*@
-@*@{
+﻿@{
     Layout = null;
-}*@
+}
 
 <!DOCTYPE html>
 
@@ -16,8 +15,14 @@
         <h1>Pagina principal - Home</h1>
     </header>
     <div>
-        <p>Hola @User.Identity.Name</p>
-        <p><a href="@Url.Action("LogOut","Auth")">Log Out</a></p>
+        <p>
+            Hola @User.Identity.Name<br /> Usuario de: @ViewBag.Cuntry
+        </p>
+        <p>
+            <a href="@Url.Action("Index","Category")">Categorias</a>
+            
+            <a href="@Url.Action("LogOut","Auth")">Log Out</a>
+        </p>
     </div>
 </body>
 </html>
