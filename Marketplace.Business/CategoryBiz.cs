@@ -31,5 +31,17 @@ namespace Marketplace.Business
             var lista = db.Get();// llamo a metodo Get del contexto generado
             return lista;
         }
+
+        public void Editar(Category model)
+        {
+            var db = new BaseDataServices<Category>();
+            db.Update(model);
+        }
+
+        public Category Get(int id)
+        {
+            var db = new BaseDataServices<Category>();
+            return db.GetById(id);
+        }
     }
 }

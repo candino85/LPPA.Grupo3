@@ -44,7 +44,7 @@ namespace Marketplace.Data.Services
                 query = query.Where(whereExpression);
             // busca en includeModels si tengo entidades para relacionar, incluyento todos los modelos que necesite
             var entity = includeModels.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            // incluye en la entidad que estoy utilizando todos los medelos adicionales que se necesiten en la query
+            // incluye en la entidad que estoy utilizando todos los modelos adicionales que se necesiten en la query
             query = entity.Aggregate(query, (current, model) => current.Include(model));
             // si no es null le pasa el criterio de ordenamiento
             if (orderFunction != null)

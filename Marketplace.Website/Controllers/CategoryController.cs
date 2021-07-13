@@ -11,7 +11,7 @@ namespace Marketplace.Website.Controllers
     public class CategoryController : Controller
     {
         /// <summary>
-        /// Instancio CategoryBiz y llamo al método Listar para generar el modelo que luego 
+        /// listar categoriaspara generar el modelo que luego 
         /// se lo paso a la vista para que la muestre
         /// </summary>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace Marketplace.Website.Controllers
             if (!ModelState.IsValid) // Para controlar si el modelo es válido 
                 return View();
             
-            // TODO: implementar para bitacore
+            // TODO: implementar para bitacora
             try
             {
                 var biz = new CategoryBiz();
@@ -46,6 +46,20 @@ namespace Marketplace.Website.Controllers
                 Console.WriteLine(e);
                 return View(model);
             }            
+        }
+
+        [HttpGet]
+        public ActionResult Update()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update(Category model)
+        {
+            var biz = new CategoryBiz();
+            biz.Editar(model);
+            return RedirectToAction("Index");
         }
     }
 }

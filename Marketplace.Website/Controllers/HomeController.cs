@@ -4,6 +4,7 @@ using Marketplace.Data.Services;
 
 namespace Marketplace.Website.Controllers
 {   
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IProductData _db;

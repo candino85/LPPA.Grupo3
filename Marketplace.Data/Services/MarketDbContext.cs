@@ -6,7 +6,8 @@ namespace Marketplace.Data.Services
 {
     public class MarketDbContext : DbContext
     {
-        public DbSet<Category> Categories { get; set; } // crea todas las entidades para guardar en bbdd
+        // crea todos los dbcontext de las entidades para guardar en bbdd
+        public DbSet<Category> Categories { get; set; } 
         public DbSet<Product> Products { get; set; }
         public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<OrderedProduct> OrderedProducts { get; set; }

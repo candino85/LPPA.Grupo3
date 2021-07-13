@@ -30,12 +30,12 @@ namespace Marketplace.Website.Controllers
             }
 
             //TODO:
-            if (model.Email == "admin" && model.Password == "admin")
+            if (model.Email == "admin@admin.com" && model.Password == "admin")
             {
                 var claims = new[]
                 {
                     new Claim(ClaimTypes.Name, "admin"),
-                    new Claim(ClaimTypes.Email, "admin"),
+                    new Claim(ClaimTypes.Email, "admin@admin.com"),
                     new Claim(ClaimTypes.Country, "Argentina"),
                 };
 
