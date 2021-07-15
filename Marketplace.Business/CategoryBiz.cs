@@ -9,39 +9,45 @@ using System.Threading.Tasks;
 namespace Marketplace.Business
 {
     public class CategoryBiz
-    {
+    {        
+        /// <summary>
+        /// Listar entidades Category generando el contexto con Data/BaseDataServices.cs indicandole el nombre de la entidad (T) con la que voy a trabajar
+        /// </summary>
+        /// <returns>Llama el método Get que retorna una lista de entidades, en este caso Categories</returns>
+        public Category Get(int id)
+        {
+            var db = new BaseDataServices<Category>();
+            return db.GetById(id);
+        }
+
+        public List<Category> List()
+        {
+            var db = new BaseDataServices<Category>();
+            var lista = db.Get();
+            return lista;
+        }
+
         /// <summary>
         /// Crear una nueva Category pasandola por parametro.
         /// TODO: Agregar validaciones correspondientes.
         /// </summary>
         /// <param name="model"></param>
-        public void Agregar(Category model)
+        public void Create(Category model)
         {
-            var db = new BaseDataServices<Category>();// genero contexto
+            var db = new BaseDataServices<Category>();
             db.Create(model);
         }
 
-        /// <summary>
-        /// Listar entidades Category generando el contexto con Data/BaseDataServices.cs indicandole el nombre de la entidad (T) con la que voy a trabajar
-        /// </summary>
-        /// <returns>Llama el método Get que retorna una lista de entidades, en este caso Categories</returns>
-        public List<Category> Listar()
-        {
-            var db = new BaseDataServices<Category>();// genero contexto
-            var lista = db.Get();// llamo a metodo Get del contexto generado
-            return lista;
-        }
-
-        public void Editar(Category model)
+        public void Edit(Category model)
         {
             var db = new BaseDataServices<Category>();
             db.Update(model);
         }
 
-        public Category Get(int id)
+        public void Delete(Category model)
         {
             var db = new BaseDataServices<Category>();
-            return db.GetById(id);
+            db.Delete(model);
         }
     }
 }

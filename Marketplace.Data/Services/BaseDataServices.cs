@@ -25,8 +25,10 @@ namespace Marketplace.Data.Services
 
         public void Delete(T entity)
         {
-            Db.Set<T>().Remove(entity);
+            Db.Entry(entity).State = EntityState.Deleted;
             Db.SaveChanges();
+            //Db.Set<T>().Remove(entity);
+            //Db.SaveChanges();
         }
 
         public void Delete(int id)

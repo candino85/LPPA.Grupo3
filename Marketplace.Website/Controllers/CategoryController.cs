@@ -11,14 +11,14 @@ namespace Marketplace.Website.Controllers
     public class CategoryController : Controller
     {
         /// <summary>
-        /// listar categoriaspara generar el modelo que luego 
+        /// Listar categorias para generar el modelo que luego 
         /// se lo paso a la vista para que la muestre
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
             var biz = new CategoryBiz();
-            var model = biz.Listar();
+            var model = biz.List();
             return View(model);
         }
 
@@ -33,33 +33,68 @@ namespace Marketplace.Website.Controllers
         {
             if (!ModelState.IsValid) // Para controlar si el modelo es válido 
                 return View();
-            
+
             // TODO: implementar para bitacora
             try
             {
                 var biz = new CategoryBiz();
-                biz.Agregar(model);
+                biz.Create(model);
                 return RedirectToAction("Index");// Para redireccionar al index de Categorias
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return View(model);
-            }            
+            }
         }
 
         [HttpGet]
-        public ActionResult Update()
+        public ActionResult Edit(int id)
         {
-            return View();
+            var biz = new CategoryBiz();
+            var model = biz.Get(id);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Update(Category model)
+        public ActionResult Edit(Category model)
+        {
+            try
+            {
+                var biz = new CategoryBiz();
+                biz.Edit(model);
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return View(model);
+            }
+        }
+    
+
+        [HttpGet]
+        public ActionResult Delete(int id)
         {
             var biz = new CategoryBiz();
-            biz.Editar(model);
-            return RedirectToAction("Index");
+            var model = biz.Get(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Category model)
+        {
+            try
+            {
+                var biz = new CategoryBiz();
+                biz.Delete(model);
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return View(model);
+            }
         }
     }
 }
