@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Marketplace.Data.Models;
+using Marketplace.Business;
 using Marketplace.Data.Services;
 
 namespace Marketplace.Website.Controllers
@@ -7,32 +7,13 @@ namespace Marketplace.Website.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        private readonly IProductData _db;
-        public HomeController(IProductData productData)
-        {
-            _db = productData;
-        }
+        private readonly ProductBiz _db;
+ 
 
         [HttpGet]
         public ActionResult Index()
         {
-            // build
-            var model = _db.GetAll();
-
-            // render
-            return View(model); // => html
-        }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Product model)
-        {
-            return View();
-        }
+            return View(); // => html
+        }        
     }
 }

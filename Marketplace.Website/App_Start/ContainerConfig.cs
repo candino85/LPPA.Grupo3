@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using System.Web.Mvc;
 using Marketplace.Data.Services;
+using Marketplace.Entities.Models;
 
 namespace Marketplace.Website.App_Start
 {
@@ -19,8 +20,10 @@ namespace Marketplace.Website.App_Start
             //builder.RegisterControllers(typeof(MVCApplication).Assembly);// registro el controlador
 
             // ## RegisterType: se utiliza para registrar cada uno de los tipos que voy a usar
-            builder.RegisterType<InMemoryProductData>().As<IProductData>().SingleInstance();
+            //builder.RegisterType<InMemoryProductData>().As<IProductData>().SingleInstance();
+            //builder.RegisterType<Product>().As<IProductData>().SingleInstance();            
             //builder.RegisterType<Clase_Concreta>().As<Interfase>().SingleInstance();
+
             // ## RegisterType
 
             var container = builder.Build();// se construye

@@ -60,12 +60,9 @@
       <DependentUpon>202105160451197_EditEntitiesFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\CategoryTypes.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseDataServices.cs" />
     <Compile Include="Services\IDataService.cs" />
-    <Compile Include="Services\InMemoryProductData.cs" />
     <Compile Include="Services\IProductData.cs" />
     <Compile Include="Services\MarketDbContext.cs" />
   </ItemGroup>
@@ -90,6 +87,9 @@
     <EmbeddedResource Include="Migrations\202105160451197_EditEntitiesFields.resx">
       <DependentUpon>202105160451197_EditEntitiesFields.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

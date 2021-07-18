@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Marketplace.Data.Models;
+using Marketplace.Entities.Models;
 
 namespace Marketplace.Data.Services
 {

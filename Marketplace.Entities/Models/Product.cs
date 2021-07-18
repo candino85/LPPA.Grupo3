@@ -13,11 +13,14 @@ namespace Marketplace.Entities.Models
         [Required]
         [MaxLength(50)]
         public string Description { get; set; }
+
+        [Required]
         public double Price { get; set; }
+
         public DateTime LastUpdated { get; set; }
+
+        [Required]
         public int CategoryId  { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual ICollection<OrderedProduct> OrderedProducts { get; set; }
 
     }
 }
