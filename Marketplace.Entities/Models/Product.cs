@@ -6,7 +6,7 @@ namespace Marketplace.Entities.Models
 {
     public class Product : IdentityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Requerido")]
         [MaxLength(20)]
         public string Name { get; set; }
         

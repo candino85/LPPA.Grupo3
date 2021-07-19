@@ -21,7 +21,26 @@ namespace Marketplace.Website.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-          
+            var categoryBiz = new CategoryBiz();
+            List<Category> categoryList = (from c in categoryBiz.List()
+                                           select new Category
+                                           {
+                                               Id = c.Id,
+                                               Name = c.Name
+                                           }).ToList();
+
+            List<SelectListItem> categories = categoryList.ConvertAll(c =>
+            {
+                return new SelectListItem()
+                {
+                    Text = c.Name.ToString(),
+                    Value = c.Id.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.items = categories;
+
             return View();
         }
 
@@ -34,28 +53,9 @@ namespace Marketplace.Website.Controllers
             // TODO: implementar para bitacora
             try
             {
-                var categoryBiz = new CategoryBiz();
-                List<Category> categoryList = (from c in categoryBiz.List()
-                                               select new Category
-                                               { 
-                                                    Id = c.Id,
-                                                    Name = c.Name
-                                               }).ToList();
-
-                List<SelectListItem> categories = categoryList.ConvertAll(c =>
-                {
-                    return new SelectListItem()
-                    {
-                        Text = c.Name.ToString(),
-                        Value = c.Id.ToString(),
-                        Selected = false
-                    };
-                });
-
-                ViewBag.items = categories;
 
                 var productBiz = new ProductBiz();
-                model.LastUpdated = DateTime.Now;
+                model.LastUpdated = DateTime.Now;  
                 productBiz.Create(model);
                 
                 return RedirectToAction("Index");

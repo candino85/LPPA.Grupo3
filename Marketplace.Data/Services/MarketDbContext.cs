@@ -14,6 +14,7 @@ namespace Marketplace.Data.Services
         public DbSet<Cart> Carts { get; set; }
         public MarketDbContext(): base("DefaultConnection")
         {
+
         }
 
         // EntityFramework pluraliza las entidades cuando trabaja con las tablas
